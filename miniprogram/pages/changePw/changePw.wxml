@@ -1,0 +1,43 @@
+<view class="contianer">
+    <view class="list">
+        <view class="list-item list-pw">
+            <text>旧密码</text>
+            <input bindblur="checkPw" type="{{showPw3 ? 'text' : 'password'}}"/>
+            <view wx:if="{{!showPw3}}" class="pw-imgbox" bindtap="showPassword3">
+                <image src="../../images/register/hide_pw.png"/>
+            </view>
+            <view wx:else class="pw-imgbox" bindtap="hidePassword3">
+                <image src="../../images/register/show_pw.png"/>
+            </view>
+            <image wx:if="{{!pass}}" class="check-img" src="../../images/register/check_false.png" mode="aspectFit"/>
+            <image wx:else class="check-img" src="../../images/register/check_true.png" mode="aspectFit"/>
+        </view>
+        <view class="list-item list-pw">
+            <text>新密码</text>
+            <input bindblur="checkPasswordT" maxlength="12" placeholder="长度6-12" placeholder-class="list-accountph" type="{{showPw1 ? 'text' : 'password'}}"/>
+            <view wx:if="{{!showPw1}}" class="pw-imgbox" bindtap="showPassword1">
+                <image src="../../images/register/hide_pw.png"/>
+            </view>
+            <view wx:else class="pw-imgbox" bindtap="hidePassword1">
+                <image src="../../images/register/show_pw.png"/>
+            </view>
+            <image wx:if="{{!passwordT}}" class="check-img" src="../../images/register/check_false.png" mode="aspectFit"/>
+            <image wx:else class="check-img" src="../../images/register/check_true.png" mode="aspectFit"/>
+        </view>
+        <view class="list-item list-pw">
+            <text>确认密码</text>
+            <input bindblur="checkPassword" disabled="{{!passwordT}}" type="{{showPw2 ? 'text' : 'password'}}"/>
+            <view wx:if="{{!showPw2}}" class="pw-imgbox" bindtap="showPassword2">
+                <image src="../../images/register/hide_pw.png"/>
+            </view>
+            <view wx:else class="pw-imgbox" bindtap="hidePassword2">
+                <image src="../../images/register/show_pw.png"/>
+            </view>
+            <image wx:if="{{!password}}" class="check-img" src="../../images/register/check_false.png" mode="aspectFit"/>
+            <image wx:else class="check-img" src="../../images/register/check_true.png" mode="aspectFit"/>
+        </view>
+    </view>
+    <view class="submit" bindtap="submitInfo">
+        确认
+    </view>
+</view>

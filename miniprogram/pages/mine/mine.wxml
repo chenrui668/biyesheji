@@ -1,0 +1,109 @@
+<view class="container">
+    <view class="top">
+        <image class="bg" src="cloud://chenrui-data-o5asl.6368-chenrui-data-o5asl-1259123259/topBg.jpg" mode="aspectFill"/>
+        <view wx:if="{{user}}" class="photo">
+            <image src="{{user.photo}}" mode="aspectFill"/>
+        </view>
+        <view wx:else class="photo">
+            <image src="../../images/mine/photo_def.png" mode="aspectFill"/>
+        </view>
+        <view class="btn" wx:if="{{!user}}">
+            <view class="btn-item" bindtap="toLogin">登录</view>
+            <view class="btn-item" bindtap="toRegister">注册</view>
+        </view>
+        <view class="account" wx:else>
+            {{user.account}}
+            <view class="cancellation btn-item" bindtap="toCancellation">
+                注销
+            </view>
+        </view>
+    </view>
+    <view class="list" wx:if="{{user}}">
+        <view class="list-money list-item" bindtap='showMoney'>
+            <text>余额</text>
+            <text class="right-text">￥{{user.money}}</text>
+        </view>
+        <view class="list-wx list-item">
+            <text>微信</text>
+            <text class="right-text">{{user.wx}}</text>
+        </view>
+        <view class="list-phone list-item">
+            <text>电话号码</text>
+            <text class="right-text">{{user.phone}}</text>
+        </view>
+        <view class="list-address list-item">
+            <text>收货地址</text>
+            <view class="address">{{user.address}}</view>
+        </view>
+        <view class="list-change list-item" bindtap="toChangeInfo">
+            <text>修改信息</text>
+            <image src="../../images/mine/right_row.png" />
+        </view>
+        <view class="list-change list-item" bindtap="toChangePw">
+            <text>修改密码</text>
+            <image src="../../images/mine/right_row.png" />
+        </view>
+    </view>
+    <view wx:if="{{showMoney}}" class="money-page" style="height: {{height}}rpx">
+        <view class="money-content">
+            <view class="money-title">
+                余额
+            </view>
+            <view class="money-value">
+                ￥{{user.money}}
+            </view>
+            <view class="money-recharge" wx:if="{{showRecharge}}">
+                <view class="money-recharge_value">
+                    充值金额:
+                    <input type="text" placeholder="0" bindblur="checkValue"/>
+                </view>
+                <view class="money-recharge_type money-recharge_value">
+                    充值方式: 
+                    <text>微信钱包</text>
+                </view>
+                <view class="money-recharge_value">
+                    账户密码:
+                    <input type="password" bindblur="checkPassword"/>
+                </view>
+                <view class="money-btn">
+                    <view class="money-btn_item" bindtap='checkRecharge'>
+                        确定
+                    </view>
+                    <view class="money-btn_item" bindtap='cancelRecharge'>
+                        取消
+                    </view>
+                </view>
+            </view>
+            <view class="money-recharge" wx:if="{{showWithdrawal}}">
+                <view class="money-recharge_value">
+                    提现金额:
+                    <input type="text" placeholder="0" bindblur="checkValue2"/>
+                </view>
+                <view class="money-recharge_type money-recharge_value">
+                    提现方式: 
+                    <text>微信钱包</text>
+                </view>
+                <view class="money-recharge_value">
+                    账户密码:
+                    <input type="password" bindblur="checkPassword2"/>
+                </view>
+                <view class="money-btn">
+                    <view class="money-btn_item" bindtap='checkWithdrawal'>
+                        确定
+                    </view>
+                    <view class="money-btn_item" bindtap='cancelWithdrawal'>
+                        取消
+                    </view>
+                </view>
+            </view>
+            <view class="money-btn" wx:if="{{!showWithdrawal && !showRecharge}}">
+                <view class="money-btn_item" bindtap='toRecharge'>
+                    充值
+                </view>
+                <view class="money-btn_item" bindtap='toWithdrawal'>
+                    提现
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

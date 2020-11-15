@@ -1,0 +1,411 @@
+<view class="container" style="height: {{height}}rpx">
+    <view class="bg">
+        <view class="top" wx:if="{{petList1.length > 0}}">
+            <view class="title">
+                寄养记录
+            </view>
+            <view class="item" wx:for="{{petList1}}" wx:key="index">
+                <view class="item-top">
+                    <view class="item-top_left">
+                        <image src="{{item.imgUrl}}" mode="aspectFit"/>
+                    </view>
+                    <view class="item-top_right">
+                        <view class="item-name">
+                            <text>{{item.name}}</text>
+                            <image src="../../images/petList/male.png" mode="aspectFit"/>
+                        </view>
+                        <view class="item-age">
+                            年龄: {{item.age}}
+                        </view>
+                        <view class="item-days">
+                            寄养天数: {{item.days}}天
+                        </view>
+                        <view class="item-price">
+                            寄养费:
+                            <text class="item-price_icon">￥</text>
+                            <text class="item-price_text">{{item.price}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="content" wx:if="{{item.showContent}}">
+                    <view class="progress {{item.status >= 7 ? 'progress-border' : ''}}">
+                        <view class="progress-title">
+                            <image src="../../images/logs/arrow_right.png" />
+                            进度
+                        </view>
+                        <view class="progress-basic">
+                            <view class="progress-basic_line">
+                                <view class="progress-line" style="width: {{(item.statusDots[0].length - 1) * 100}}rpx">
+                                </view>
+                            </view>
+                            <view class="progress-baisc_dot progress-dot" wx:for="{{item.statusDots[0]}}" wx:key="index" style="left: {{item}}rpx"></view>
+                            <view class="progress-baisc_dot" wx:for="{{item.statusDots[1]}}" wx:key="index" style="left: {{item}}rpx"></view>
+                        </view>
+                        <view class="progress-detail" style="margin-left: {{(item.statusDots[0].length - 1) * 100}}rpx">
+                            {{item.statusText}}
+                        </view>
+                    </view>
+                    <view wx:if="{{item.applyUser}}" class="content2">
+                        <view class="progress-title">
+                            <image src="../../images/logs/arrow_right.png" />
+                            申请人
+                        </view>
+                        <view class="apply-item" wx:for="{{item.applyUser}}" wx:for-item="itm" wx:key="index">
+                            <view class="apply-item_top">
+                                <image src="{{itm.photo}}" mode="aspectFill"/>
+                                <view class="apply-item_right">
+                                    <text class="apply-item_account">{{itm.account}}</text>
+                                    <text class="apply-item_region">{{itm.region}}</text>
+                                </view>
+                            </view>
+                            <view class="apply-item_foot">
+                                <view class="apply-item_info">
+                                    <view class="apply-item_wx">
+                                        微信: {{itm.wx}}
+                                    </view>
+                                    <view class="apply-item_phone">
+                                        电话号码: {{itm.phone}}
+                                    </view>
+                                    <view class="apply-item_reason">
+                                        申请理由: {{itm.reason}}
+                                    </view>
+                                    <view class="apply-item_evaluate" wx:if="{{itm.evaluate.length > 0}}">
+                                        <view class="apply-evaluate_title">
+                                            历史评价:
+                                        </view>
+                                        <view class="apply-evaluate_box">
+                                            <view class="evaluate-item" wx:for="{{itm.evaluate}}" wx:key="index" wx:for-item="it">
+                                                <view class="evaluate-item_top">
+                                                    <image class="evaluate-item_photo" src='{{it.accountAPhoto}}' mode="aspectFill" />
+                                                    <view class="evaluate-item_star">
+                                                        <text>{{it.accountA}}</text>
+                                                        <view class="evaluate-item_stars">
+                                                            <view wx:for="{{it.starList}}" class="evaluate-star_box" wx:key="index" wx:for-item="i">
+                                                                <image wx:if="{{i}}" src="../../images/logs/star_ac.png" mode="aspectFit"/>
+                                                                <image wx:else src="../../images/logs/star_de.png" mode="aspectFit"/>
+                                                            </view>
+                                                        </view>
+                                                    </view>
+                                                    <text class="evaluate-item_date">{{it.date}}</text>
+                                                </view>
+                                                <view class="evaluate-item_foot">
+                                                    {{it.text}}
+                                                </view>
+                                            </view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="apply-button">
+                                <view class="apply-button_left" bindtap="toAgree" data-id="{{itm._id}}" data-petid="{{itm.petId}}" data-account="{{itm.account}}">
+                                    同意
+                                </view>
+                                <view class="apply-button_right" bindtap="toDisagree" data-id="{{itm._id}}" data-account="{{itm.account}}">
+                                    拒绝
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view wx:if="{{item.status > 1}}" class="content2 content2-padding">
+                        <view class="progress-title">
+                            <image src="../../images/logs/arrow_right.png" />
+                            领养人
+                        </view>
+                        <view class="apply-item_top">
+                            <image src="{{item.userB.photo}}" mode="aspectFill"/>
+                            <view class="apply-item_right">
+                                <text class="apply-item_account">{{item.userB.account}}</text>
+                            </view>
+                        </view>
+                        <view class="apply-item_foot">
+                            <view class="apply-item_info">
+                                <view class="apply-item_wx">
+                                    微信: {{item.userB.wx}}
+                                </view>
+                                <view class="apply-item_phone">
+                                    电话号码: {{item.userB.phone}}
+                                </view>
+                                <view class="apply-item_address">
+                                    详细地址: {{item.userB.address}}
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view wx:if="{{item.video.length > 0}}" class="pet-video">
+                        <view class="progress-title">
+                            <image src="../../images/logs/arrow_right.png" />
+                            宠物视频
+                        </view>
+                        <view class="video-item" wx:for="{{item.video}}" wx:key="index" wx:for-item="itm">
+                            <view class="video-date">
+                                {{itm.date}}
+                            </view>
+                            <video src="{{itm.url}}"></video>
+                        </view>
+                    </view>
+                    <view wx:if="{{item.status === 2}}" class="status2">
+                        <view class="status2-btn1" bindtap="toSend" data-id="{{item._id}}" data-account="{{item.accountB}}" data-price="{{item.price}}">
+                            已寄出
+                        </view>
+                    </view>
+                    <view wx:if="{{item.status === 4}}" class="status2">
+                        <view class="status2-btn1" bindtap="toEnd" data-id="{{item._id}}"  data-account="{{item.accountB}}">
+                            提前结束寄养
+                        </view>
+                    </view>
+                    <view wx:if="{{item.status === 6}}" class="status2">
+                        <view class="status2-btn1" bindtap="toReceiveBack" data-id="{{item._id}}">
+                            已收到
+                        </view>
+                    </view>
+                    <view wx:if="{{item.status === 7}}" class="status2">
+                        <view class="status2-btn1" bindtap="toEvaluate" data-account="{{item.accountB}}" data-id="{{item._id}}">
+                            评价
+                        </view>
+                    </view>
+                    <view wx:if="{{item.status === 1}}" class="content1">
+                        <view class="button-delete" bindtap='cancelRelease' data-id='{{item._id}}'>
+                            取消发布
+                        </view>
+                    </view>
+                </view>
+                <view wx:else class="item-foot {{item.status >= 7 ? 'item-apply_btn' : ''}}" bindtap="openContent" data-index="{{index}}">
+                    <view>
+                        {{item.statusText}}
+                    </view>
+                    <image src="../../images/logs/arrow_bottom.png" mode="aspectFill"/>
+                </view>
+                <view wx:if="{{item.showContent}}" bindtap="closeContent" data-index = "{{index}}" class="item-foot_top {{item.status >= 7 ? 'item-apply_btn' : ''}}">
+                    <image src="../../images/logs/arrow_top.png" mode="aspectFill"/>
+                </view>
+            </view>
+        </view>
+        <view class="mid"  wx:if="{{petList2.length > 0}}">
+            <view class="title">
+                领养记录
+            </view>
+            <view class="item" wx:for="{{petList2}}" wx:key="index">
+                <view class="item-top">
+                    <view class="item-top_left">
+                        <image src="{{item.imgUrl}}" mode="aspectFit"/>
+                    </view>
+                    <view class="item-top_right">
+                        <view class="item-name">
+                            <text>{{item.name}}</text>
+                            <image src="../../images/petList/male.png" mode="aspectFit"/>
+                        </view>
+                        <view class="item-age">
+                            年龄: {{item.age}}
+                        </view>
+                        <view class="item-days">
+                            寄养天数: {{item.days}}天
+                        </view>
+                        <view class="item-price">
+                            寄养费:
+                            <text class="item-price_icon">￥</text>
+                            <text class="item-price_text">{{item.price}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="content" wx:if="{{item.showContent}}">
+                    <view class="progress {{item.status >= 7 ? 'progress-border' : ''}}">
+                        <view class="progress-title">
+                            <image src="../../images/logs/arrow_right.png" />
+                            进度
+                        </view>
+                        <view class="progress-basic">
+                            <view class="progress-basic_line">
+                                <view class="progress-line" style="width: {{(item.statusDots[0].length - 1) * 100}}rpx">
+                                </view>
+                            </view>
+                            <view class="progress-baisc_dot progress-dot" wx:for="{{item.statusDots[0]}}" wx:key="index" style="left: {{item}}rpx"></view>
+                            <view class="progress-baisc_dot" wx:for="{{item.statusDots[1]}}" wx:key="index" style="left: {{item}}rpx"></view>
+                        </view>
+                        <view class="progress-detail" style="margin-left: {{(item.statusDots[0].length - 1) * 100}}rpx">
+                            {{item.statusText}}
+                        </view>
+                    </view>
+                    <view class="content2 content2-padding">
+                        <view class="progress-title">
+                            <image src="../../images/logs/arrow_right.png" />
+                            主人信息
+                        </view>
+                        <view class="apply-item_top">
+                            <image src="{{item.userA.photo}}" mode="aspectFill"/>
+                            <view class="apply-item_right">
+                                <text class="apply-item_account">{{item.userA.account}}</text>
+                            </view>
+                        </view>
+                        <view class="apply-item_foot">
+                            <view class="apply-item_info">
+                                <view class="apply-item_wx">
+                                    微信: {{item.userA.wx}}
+                                </view>
+                                <view class="apply-item_phone">
+                                    电话号码: {{item.userA.phone}}
+                                </view>
+                                <view class="apply-item_address">
+                                    详细地址: {{item.userA.address}}
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view wx:if="{{item.status === 3}}" class="status2">
+                        <view class="status2-btn1" bindtap="toReceive" data-id="{{item._id}}" data-account="{{item.accountA}}">
+                            已收到
+                        </view>
+                    </view>
+                    <view wx:if="{{item.status === 4}}" class="status2">
+                        <view class="status2-btn1" bindtap="toUploadVideo" data-id="{{item._id}}">
+                            上传宠物视频
+                        </view>
+                    </view>
+                    <view wx:if="{{item.status === 5}}" class="status2">
+                        <view class="status2-btn1" bindtap="toSendBack" data-id="{{item._id}}" data-account="{{item.accountA}}">
+                            已寄回
+                        </view>
+                    </view>
+                </view>
+                <view wx:else class="item-foot {{item.status >= 7 ? 'item-apply_btn' : ''}}" bindtap="openContent2" data-index="{{index}}">
+                    <view>
+                        {{item.statusText}}
+                    </view>
+                    <image src="../../images/logs/arrow_bottom.png" mode="aspectFill"/>
+                </view>
+                <view wx:if="{{item.showContent}}" bindtap="closeContent2" data-index = "{{index}}" class="item-foot_top {{item.status >= 7 ? 'item-apply_btn' : ''}}">
+                    <image src="../../images/logs/arrow_top.png" mode="aspectFill"/>
+                </view>
+            </view>
+        </view>
+        <view class="foot"  wx:if="{{petList3.length > 0}}">
+            <view class="title">
+                申请记录
+            </view>
+            <view class="item" wx:for="{{petList3}}" wx:key="index">
+                <view class="item-top">
+                    <view class="item-top_left">
+                        <image src="{{item.petList.imgUrl}}" mode="aspectFit"/>
+                    </view>
+                    <view class="item-top_right">
+                        <view class="item-name">
+                            <text>{{item.petList.name}}</text>
+                            <image src="../../images/petList/male.png" mode="aspectFit"/>
+                        </view>
+                        <view class="item-age">
+                            年龄: {{item.petList.age}}
+                        </view>
+                        <view class="item-days">
+                            寄养天数: {{item.petList.days}}天
+                        </view>
+                        <view class="item-price">
+                            寄养费:
+                            <text class="item-price_icon">￥</text>
+                            <text class="item-price_text">{{item.petList.price}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="content" wx:if="{{item.showContent}}">
+                    <view class="content2 content2-padding">
+                        <view class="progress-title">
+                            <image src="../../images/logs/arrow_right.png" />
+                            主人信息
+                        </view>
+                        <view class="apply-item_top">
+                            <image src="{{item.userA.photo}}" mode="aspectFill"/>
+                            <view class="apply-item_right">
+                                <text class="apply-item_account">{{item.userA.account}}</text>
+                                <text class="apply-item_region">{{item.userA.region[0]}}{{item.userA.region[1]}}{{item.userA.region[2]}}</text>
+                            </view>
+                        </view>
+                        <view class="apply-item_foot">
+                            <view class="apply-item_info">
+                                <view class="apply-item_wx">
+                                    微信: {{item.userA.wx}}
+                                </view>
+                                <view class="apply-item_phone">
+                                    电话号码: {{item.userA.phone}}
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view wx:if="{{item.status === 1}}" class="content1">
+                        <view class="button-delete" bindtap='cancelApply' data-id='{{item._id}}'>
+                            取消申请
+                        </view>
+                    </view>
+                </view>
+                <view wx:else class="item-foot {{item.status > 1 ? 'item-apply_btn' : ''}}" bindtap="openContent3" data-index="{{index}}">
+                    <view>
+                        {{item.statusText}}
+                    </view>
+                    <image src="../../images/logs/arrow_bottom.png" mode="aspectFill"/>
+                </view>
+                <view wx:if="{{item.showContent}}" bindtap="closeContent3" data-index = "{{index}}" class="item-foot_top {{item.status > 1 ? 'item-apply_btn' : ''}}">
+                    <image src="../../images/logs/arrow_top.png" mode="aspectFill"/>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{showEvaluatePage}}" class="evaluate-page" style="height: {{height}}rpx">
+        <view class="evaluate-content">
+            <view class="evaluate-title">
+                评价
+            </view>
+            <view class="evaluate-star">
+                <text>星级:</text>
+                <view class="star-box">
+                    <view wx:for="{{starList}}" class="star-item" wx:key="index">
+                        <image wx:if="{{item}}" src="../../images/logs/star_ac.png" mode="aspectFit" bindtap='changeStar' data-index='{{index}}'/>
+                        <image wx:else src="../../images/logs/star_de.png" mode="aspectFit" bindtap='changeStar' data-index='{{index}}'/>
+                    </view>
+                </view>
+            </view>
+            <textarea bindinput="checkEvaluate"></textarea>
+            <view class="evaluate-btn">
+                <view class="btn-item" bindtap='submitEvalute'>
+                    确定
+                </view>
+                <view class="btn-item" bindtap='cancelEvaluate'>
+                    取消
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="pay-page evaluate-page" wx:if="{{showPayPage}}" style="height: {{height}}rpx">
+        <view class="pay-content">
+            <view class="pay-title">
+                支付寄养费
+            </view>
+            <view class="pay-money">
+                ￥{{payPrice}}
+            </view>
+            <view class="pay-password">
+                请输入密码:
+            </view>
+            <view class="pay-pw_input">
+                <input type="password" bindblur="checkPayPassword"/>
+            </view>
+            <view class="pay-btn">
+                <view class="pay-btn_item" bindtap='choosePay'>
+                    确定
+                </view>
+                <view class="pay-btn_item" bindtap='cancelPay'>
+                    取消
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="message-page  evaluate-page" wx:if="{{showMessage}}" style="height: {{height}}rpx">
+        <view class="message-content">
+            <view class="message-title">
+                提示
+            </view>
+            <view class="message-text">
+                {{messageList[0].text}}           
+            </view>
+            <view class="message-btn" bindtap='checkMessage'>
+                确定
+            </view>
+        </view>
+    </view>
+</view>

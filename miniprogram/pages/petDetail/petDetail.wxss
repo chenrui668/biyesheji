@@ -1,0 +1,246 @@
+.container {
+    height: 100%;
+    width: 100%;
+    background-color: #d6f7f8;
+    padding-bottom: 140rpx;
+}
+.img {
+    width: 100%;
+    height: 500rpx;
+    background-color: #fff;
+}
+.img image {
+    width: 100%;
+    height: 100%;
+}
+.content {
+    width: 100%;
+    height: 100%; 
+}
+.pet-info {
+    width: 100%;
+    margin-top: 20rpx;
+}
+.title {
+    margin: 0 0 0 30rpx;
+    font-size: 38rpx;
+    color: #1196db;
+    border-left: 8rpx solid #1196db;
+    padding-left: 20rpx;
+    height: 42rpx;
+    line-height: 42rpx;
+}
+.pet-content {
+    margin-top: 20rpx;
+    padding: 30rpx;
+    margin-left: 50rpx;
+    width: 590rpx;
+    background-color: #fff;
+    font-size: 34rpx;
+    color: #707070;
+    border-radius: 16rpx;
+}
+.pet-content .txt {
+    margin-left: 16rpx;
+}
+.pet-content .top {
+    height: 50rpx;
+    display: flex;
+    align-items: center;
+}
+.pet-content .name {
+    width: 290rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+} 
+.pet-content .sex {
+    width: 300rpx;
+    height: 40rpx;
+    display: flex;
+    align-items: center;
+}
+.sex image {
+    width: 36rpx;
+    height: 36rpx;
+    margin-left: 20rpx;
+}
+.pet-content .age {
+    height: 40rpx;
+    margin-top: 20rpx;
+}
+.deal-info {
+    margin-top: 20rpx;
+}
+.deal-text {
+    height: 50rpx;
+    display: flex;
+    align-items: center;
+}
+.deal-text .days {
+    width: 290rpx;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+.deal-text .price {
+    width: 300rpx;
+    height: 50rpx;
+    display: flex;
+    align-items: flex-end;
+}
+.deal-text .txt {
+    margin-left: 16rpx;
+}
+.deal-text .icon {
+    color: #ea2a2a;
+    font-size: 34rpx;
+    margin-left: 16rpx;
+}
+.deal-text .price-txt {
+    color: #ea2a2a;
+    font-size: 40rpx;
+}
+.deal-detail {
+    margin-top: 20rpx;
+}
+.detail-text {
+    margin-top: 10rpx;
+    width: 570rpx;
+    border: 2rpx solid #cdcdcd;
+    padding: 6rpx;
+    border-radius: 6rpx;
+}
+.user-info {
+    margin-top: 20rpx;
+}
+.user-top {
+    display: flex;
+    align-items: center;
+}
+.user-content .photo {
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20rpx;
+}
+.photo image {
+    width: 160rpx;
+    height: 160rpx;
+}
+.user-content .account {
+    display: flex;
+    flex-direction: column;
+}
+.user-content .name {
+    color: #1196db;
+    font-size: 42rpx;
+    margin-bottom: 14rpx;
+} 
+.user-content .region {
+    font-size: 32rpx;
+    display: flex;
+    align-items: center;
+}
+.region image {
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 6rpx;
+}
+.user-foot {
+    margin: 20rpx 0 0 20rpx;    
+}
+.user-foot .wx {
+    margin-bottom: 10rpx;  
+}
+.button {
+    height: 100rpx;
+    width: 750rpx;
+    position: fixed;
+    bottom: 0;
+    background-color: #fff;
+    border-top: 2rpx solid #cdcdcd;
+    display: flex;
+    z-index: 1;
+}
+.button .logs {
+    width: 200rpx;
+    height: 100%;
+    text-align: center;
+    font-size: 24rpx;
+    color: #707070;
+}
+.logs .icon {
+    padding-top: 10rpx;
+    height: 50rpx;
+    width: 100%;
+}
+.logs .icon image {
+    width: 50rpx;
+    height: 50rpx;
+}
+.button .apply {
+    width: 550rpx;
+    height: 100%;
+}
+.apply .apply-btn {
+    margin: 14rpx auto 0;
+    height: 70rpx;
+    width: 470rpx;
+    background-color: #1196db;
+    border-radius: 70rpx;
+    color: #fff;
+    text-align: center;
+    line-height: 70rpx;
+    font-size: 40rpx;
+}
+.apply-isUser {
+    background-color: #bfbfbf !important;
+}
+.apply-page {
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 750rpx;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+.apply-content {
+    margin: 300rpx auto 0;
+    width: 650rpx;
+    height: 580rpx;
+    background-color: #fff;
+    border-radius: 20rpx;
+}
+.apply-title {
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 40rpx;
+    text-align: center;
+}
+.apply-text {
+    margin: 0 auto;
+    width: 530rpx;
+    border: 2rpx solid #1196db;
+    padding: 10rpx;
+    border-radius: 12rpx;
+}
+.apply-choose {
+    margin-top: 40rpx;
+    height: 70rpx;
+    display: flex;
+    justify-content: center;
+}
+.apply-choose .true {
+    width: 200rpx;
+    height: 100%;
+    background-color: #1196db;
+    color: #fff;
+    font-size: 40rpx;
+    line-height: 70rpx;
+    border-radius: 70rpx;
+    text-align: center;
+}
+.apply-choose .false {
+    margin-left: 60rpx;
+    background-color: #bfbfbf;
+}

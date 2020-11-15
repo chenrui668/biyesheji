@@ -1,0 +1,115 @@
+.container {
+    height: 100%;
+    width: 100%;
+}
+.photo {
+    width: 100%;
+    height: 300rpx;
+}
+.photo-img {
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 60rpx auto 0;
+}
+.photo-img image {
+    height: 100%;
+    width: 100%;
+}
+.photo-text {
+    width: 100%;
+    height: 60rpx;
+    margin-top: 20rpx;
+    text-align: center;
+    color: #2c2c2c;
+}
+.list {
+    height: 100%;
+    width: 100%;
+}
+.list-item {
+    height: 80rpx;
+    width: 580rpx;
+    margin: 20rpx auto 0;
+    border-bottom: 2rpx solid #cdcdcd;
+    font-size: 36rpx;
+    line-height: 80rpx;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.list-item input {
+    display: inline-block;
+    color: #8a8a8a;
+}
+.list-item text {
+    display: inline-block;
+    width: 200rpx;
+    height: 80rpx;   
+    white-space: nowrap; 
+    color: #2c2c2c;
+}
+.list-pw text {
+    margin-right: 30rpx;
+}
+.list-item .address {
+    height: 80rpx;
+    width: 400rpx;
+}
+.list-item .check-img {
+    height: 40rpx;
+    width: 40rpx;
+    position: absolute;
+    right: -40rpx;
+}
+.list-accountph {
+    font-size: 32rpx;
+    color: #bfbfbf;
+}
+.list-pw .pw-imgbox {
+    width: 80rpx;
+    height: 80rpx;
+}
+.pw-imgbox image{
+    margin-left: 16rpx;
+    margin-top: 20rpx;
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.address .address-text {
+    width: 400rpx;
+    height: 80rpx;
+    white-space: nowrap;
+    overflow: scroll;
+    color: #8a8a8a;    
+}
+.address-text::-webkit-scrollbar {
+    display: none;
+}
+.list-detail_address {
+    height: 150rpx;
+    width: 580rpx;    
+    flex-direction: column;
+    align-items: start;
+}
+.list-detail_address input {
+    display: block;
+    width: 100%;
+    height: 80rpx;
+}
+.list-detail_address image {
+    top: 40rpx;
+}
+.submit {
+    height: 70rpx;
+    width: 200rpx;
+    background-color: #1196db;
+    text-align: center;
+    line-height: 70rpx;
+    font-size: 40rpx;
+    color: #fff;
+    margin-top: 20rpx;
+    border-radius: 70rpx;
+}

@@ -1,0 +1,17 @@
+.container {
+    height: 100%;
+    width: 100%;
+}
+.top {
+    height: 400rpx;
+    width: 650rpx;
+    margin: 60rpx auto 0;
+    border: 2rpx solid #cdcdcd;
+    border-radius: 12rpx;
+    text-align: center;
+    line-height: 400rpx;
+}
+.title {
+    width: 600rpx;
+    margin: 20rpx auto 0;
+}

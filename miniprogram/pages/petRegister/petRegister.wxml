@@ -1,0 +1,45 @@
+<view class="container">
+    <view class="content">
+        <view wx:if = "{{!imgUrl}}" class="chooseImg" bindtap="chooseImg">
+            <image src="../../images/petRegister/img_no.png" bindtap="click"/>
+            上传宠物照片
+        </view>
+        <view wx:else class="imgBox">
+            <image src="{{imgUrl}}" mode="aspectFit"/>
+        </view>
+        <view class="pet-item">
+            <text>昵称</text>
+            <input type="text" placeholder="宠物昵称" maxlength="6" placeholder-style="color: #cdcdcd;" bindblur="checkName"/>
+        </view>
+        <view class="pet-item">
+            <text>种类</text>
+            <input type="text" bindblur="checkType" placeholder="猫，狗或其他" placeholder-style="color: #cdcdcd;"/>
+        </view>
+        <view class="pet-item">
+            <text>年龄</text>
+            <input type="text" bindblur="checkAge"/>
+        </view>
+        <view class="pet-item">
+            <text>寄养天数</text>
+            <input type="text" bindblur="checkDays"/>
+        </view>
+        <view class="pet-item">
+            <text>寄养费(￥)</text>
+            <input type="text" bindblur="checkPrice"/>
+        </view>
+        <view class="pet-item pet-sex">
+            <text>性别</text>
+            <image wx:if="{{sex === 'male'}}" src="../../images/petRegister/male_ac.png" mode="aspectFit"/>
+            <image wx:else src="../../images/petRegister/male.png" bindtap="chooseMale" mode="aspectFit"/>
+            <image wx:if="{{sex === 'female'}}" src="../../images/petRegister/female_ac.png" mode="aspectFit"/>
+            <image wx:else src="../../images/petRegister/female.png" bindtap="chooseFemale" mode="aspectFit"/>
+        </view>
+        <view class="pet-detail">
+            <text>详情要求</text>
+            <textarea bindblur="checkDetail" placeholder="可描述宠物的详细信息或对领养者的要求" placeholder-style="color: #cdcdcd;"></textarea>
+        </view>
+        <view class="pet-submit" bindtap="checkAll">
+            提 交
+        </view>
+    </view>
+</view>

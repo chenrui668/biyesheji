@@ -1,0 +1,83 @@
+.container {
+    height: 100%;
+    width: 100%;
+}
+.content {
+    height: 100%;
+    width: 700rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20rpx;
+    border: 2rpx solid #1196db;
+    border-radius: 20rpx;
+    padding-bottom: 30rpx;
+}
+.chooseImg {
+    width: 500rpx;
+    height: 400rpx;
+    text-align: center;
+    margin-top: 30rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2rpx solid #bfbfbf;
+    color: #8a8a8a;
+}
+.chooseImg image {
+    width: 200rpx;
+    height: 200rpx;
+}
+.imgBox {
+    width: 500rpx;
+    height: 400rpx;
+    margin-top: 20rpx;
+    border: 2rpx solid #cdcdcd;
+}
+.imgBox image {
+    width: 100%;
+    height: 100%;
+}
+.pet-item {
+    width: 500rpx;
+    height: 60rpx;
+    display: flex;
+    margin-top: 20rpx;
+    border-bottom: 2rpx solid #cdcdcd;
+    padding: 10rpx 0;
+}
+.pet-item text {
+    width: 400rpx;
+}
+.pet-item input {
+    color: #1196db;
+}
+.pet-sex image{
+    width: 50rpx;
+    height: 50rpx;
+    margin: 0 10rpx;
+}
+.pet-detail {
+    width: 500rpx;
+    margin-top: 20rpx;
+}
+.pet-detail textarea {
+    width: 484rpx;
+    height: 300rpx;
+    border: 2rpx solid #cdcdcd;
+    padding: 6rpx;
+    border-radius: 10rpx;
+    margin-top: 16rpx;
+}
+.pet-submit {
+    width: 300rpx;
+    height: 80rpx;
+    text-align: center;
+    background-color: #1196db;
+    border-radius: 80rpx;
+    line-height: 80rpx;
+    color: #fff;
+    margin-top: 30rpx;
+}

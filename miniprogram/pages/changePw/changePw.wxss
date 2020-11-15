@@ -1,0 +1,69 @@
+.container {
+    height: 100%;
+    width: 100%;
+}
+.list {
+    height: 100%;
+    width: 100%;
+    margin-top: 240rpx;
+}
+.list-item {
+    height: 80rpx;
+    width: 580rpx;
+    margin: 40rpx auto 0;
+    border-bottom: 2rpx solid #cdcdcd;
+    font-size: 36rpx;
+    line-height: 80rpx;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.list-item input {
+    display: inline-block;
+    color: #8a8a8a;
+}
+.list-item text {
+    display: inline-block;
+    width: 200rpx;
+    height: 80rpx;   
+    white-space: nowrap; 
+    color: #2c2c2c;
+}
+.list-pw text {
+    margin-right: 30rpx;
+}
+.list-item .address {
+    height: 80rpx;
+    width: 400rpx;
+}
+.list-item .check-img {
+    height: 40rpx;
+    width: 40rpx;
+    position: absolute;
+    right: -40rpx;
+}
+.list-accountph {
+    font-size: 32rpx;
+    color: #bfbfbf;
+}
+.list-pw .pw-imgbox {
+    width: 80rpx;
+    height: 80rpx;
+}
+.pw-imgbox image{
+    margin-left: 16rpx;
+    margin-top: 20rpx;
+    width: 40rpx;
+    height: 40rpx;
+}
+.submit {
+    height: 70rpx;
+    width: 200rpx;
+    background-color: #1196db;
+    text-align: center;
+    line-height: 70rpx;
+    font-size: 40rpx;
+    color: #fff;
+    margin: 120rpx auto;
+    border-radius: 70rpx;
+}

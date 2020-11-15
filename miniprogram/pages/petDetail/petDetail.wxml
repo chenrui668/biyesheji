@@ -1,0 +1,108 @@
+<view class="container">
+    <view class="img">
+        <image src="{{petInfo.imgUrl}}" mode="aspectFit"/>
+    </view>
+    <view class="content">
+        <view class="pet-info">
+            <view class="title">宠物信息</view>
+            <view class="pet-content">
+                <view class="top">
+                    <view class="name">
+                        昵称: 
+                        <text class="txt">{{petInfo.name}}</text>
+                    </view>
+                    <view class="sex">
+                        性别:
+                        <image wx:if="{{petInfo.sex === 'male'}}" src="../../images/petList/male.png" mode="aspectFit"/>
+                        <image wx:else src="../../images/petList/female.png" mode="aspectFit"/>
+                    </view>
+                </view>
+                <view class="age">
+                    年龄: 
+                    <text class="txt">{{petInfo.age}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="deal-info">
+            <view class="title">寄养信息</view>
+            <view class="deal-content pet-content">
+                <view class="deal-text">
+                    <view class="days">
+                        寄养天数:
+                        <text class="txt">{{petInfo.days}}</text>
+                    </view>
+                    <view class="price">
+                        寄养费:
+                        <view class="icon">￥</view>
+                        <view class="price-txt">{{petInfo.price}}</view>
+                    </view>
+                </view>
+                <view class="deal-detail" wx:if="{{petInfo.detail}}">
+                    详情要求:
+                    <view class="detail-text">
+                        {{petInfo.detail}}
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="user-info">
+            <view class="title">主人信息</view>
+            <view class="user-content pet-content">
+                <view class="user-top">
+                    <view class="photo">
+                        <image src="{{userInfo.photo}}" mode="aspectFill" />
+                    </view>
+                    <view class="account">
+                        <text class="name">{{userInfo.account}}</text>
+                        <view class="region">
+                            <image src="../../images/petDetail/address.png" />
+                            {{userInfo.region[0]}}{{userInfo.region[1]}}{{userInfo.region[2]}}
+                        </view>
+                    </view>
+                </view>
+                <view class="user-foot">
+                    <view class="wx">
+                        微信:
+                        <text class="txt">{{userInfo.wx}}</text>
+                    </view>
+                    <view class="phone">
+                        电话号码:
+                        <text class="txt">{{userInfo.phone}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="button">
+        <view class="logs" bindtap="toLogs"> 
+            <view class="icon">
+                <image src="../../images/petDetail/logs.png" mode="aspectFit"/>
+            </view>
+            我的记录
+        </view>
+        <view class="apply">
+            <view wx:if="{{buttonStatus}}" class="apply-btn" bindtap="toApply">
+                申请领养
+            </view>
+            <view wx:else class="apply-btn apply-isUser">
+                申请领养
+            </view>
+        </view>
+    </view>
+    <view class="apply-page" wx:if="{{showPage}}" style="height: {{height}}rpx">
+        <view class="apply-content">
+            <view class="apply-title">
+                申请理由
+            </view>
+            <textarea class="apply-text" value="{{reason}}" bindinput="checkReason" placeholder="不少于10个字" placeholder-style="color: #cdcdcd"></textarea>
+            <view class="apply-choose">
+                <view class="true" bindtap="chooseTrue">
+                    确认
+                </view>
+                <view class="true false" bindtap="chooseFalse">
+                    取消
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

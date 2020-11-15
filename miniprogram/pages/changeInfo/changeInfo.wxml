@@ -1,0 +1,39 @@
+<view class="container">
+    <view class="photo">
+        <view class="photo-img" bindtap="uploadPhoto">
+            <image src="{{photo}}" />
+        </view>
+        <view class="photo-text">头像</view>
+    </view>
+    <view class="list">
+        <view class="list-item">
+            <text>微信</text>
+            <input bindblur="checkWx" value="{{wx}}" type="text"/>
+            <image wx:if="{{!wx}}" class="check-img" src="../../images/register/check_false.png" mode="aspectFit"/>
+            <image wx:else class="check-img" src="../../images/register/check_true.png" mode="aspectFit"/>
+        </view>
+        <view class="list-item">
+            <text>手机号码</text>
+            <input type="text" value="{{phone}}" bindblur="checkPhone"/>
+            <image wx:if="{{!phone}}" class="check-img" src="../../images/register/check_false.png" mode="aspectFit"/>
+            <image wx:else class="check-img" src="../../images/register/check_true.png" mode="aspectFit"/>
+        </view>
+        <view class="list-item">
+            <text>收货地址</text>
+            <picker class="address" mode="region" value="{{region}}" bindchange="bindRegionChange">
+                <view class="address-text">{{region[0]}} {{region[1]}} {{region[2]}}</view>
+            </picker>
+            <image wx:if="{{!region}}" class="check-img" src="../../images/register/check_false.png" mode="aspectFit"/>
+            <image wx:else class="check-img" src="../../images/register/check_true.png" mode="aspectFit"/>
+        </view>
+        <view class="list-item list-detail_address">
+            <text>详细地址</text>
+            <input type="text" value="{{address}}" disabled="{{!region}}" bindblur="checkAddress"/>
+            <image wx:if="{{!address}}" class="check-img" src="../../images/register/check_false.png" mode="aspectFit"/>
+            <image wx:else class="check-img" src="../../images/register/check_true.png" mode="aspectFit"/>
+        </view>
+    </view>
+    <view class="submit" bindtap="submitInfo">
+        确认
+    </view>
+</view>
